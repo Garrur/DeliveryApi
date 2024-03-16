@@ -59,9 +59,13 @@ function calculateMinimumCost(order) {
   return minCost;
 }
 
-
+app.get('/', (req, res) => {
+  // Message for Postman usage
+  const message = 'For Postman: Send a POST request to site_url/calculateMinimumCost with the following request body: {"A": 1, "B": 1, "C": 1}';
+  res.send(message);
+});
 app.post('/calculateMinimumCost', (req, res) => {
-  const order = req.body.order;
+  const order = req.body;
   if (!order) {
     return res.status(400).json({ error: 'Order details not provided' });
   }
@@ -72,5 +76,5 @@ app.post('/calculateMinimumCost', (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port  http://localhost:${PORT}`);
 });
